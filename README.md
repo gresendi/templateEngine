@@ -12,6 +12,7 @@
    > [Tests](#tests)  
    > [License](#license)  
    > [Questions](#questions)  
+   > [Example](#example)
   * * *
    >## Installation
    >To install simply download the repo
