@@ -34,6 +34,6 @@
  > - Email: gresendi@uci.edu
   * * *
   > ## Example
-  ![Example of Program Running](https://github.com/gresendi/readmeGenerator/blob/main/Assets/10-OOP-homework-demo-1.png)
+  ![Example of Employee generated Cards](https://github.com/gresendi/readmeGenerator/blob/main/10-OOP-homework-demo-1.png)
   * * *
 
