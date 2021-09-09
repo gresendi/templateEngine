@@ -3,7 +3,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const { prompt } = require("inquirer");
 const path = require("path");
-const fs = require("fs");
+const {writeFile} = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -11,6 +11,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 let employees = []
+let managerCount =0
 let employeeQuestion = [
   {
     type: 'input',
@@ -119,10 +120,17 @@ function menu(){
     message: 'Which type of employee would you like to add',
     choices: ['Manager','Engineer','Intern','All Done']
   }).then( ({employee})=>{
-    console.log(employee)
+    
     switch(employee){
       case 'Manager':
-        createManager()
+        managerCount++
+        if(managerCount<=1){
+          createManager()
+        }else{
+          console.log("You can only have one manager!")
+          menu()
+        }
+        
         
         break
       case 'Engineer':
@@ -134,7 +142,12 @@ function menu(){
         
         break
       case 'All Done':
-        render(employees)
+        writeFile('./output/index.html', render(employees), err => {
+          if (err) { console.log(err) }
+          console.log('Team Built!')
+        })
+        
+
         break
     }
     
